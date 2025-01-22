@@ -54,4 +54,16 @@ app.MapGet("/post/with-author-count", async (EFNewsService service) =>
     return Results.Ok(postWithAuthors);
 });
 
+app.MapGet("/post/new-products", async (EFNewsService service) =>
+{
+    var newProducts = await service.GetNewProducts();
+    return Results.Ok(newProducts);
+});
+
+app.MapGet("/post/ordered-posts-with-authors", async (EFNewsService service) =>
+{
+    var orderedPostsWithAuthors = await service.NewOrderOperators();
+    return Results.Ok(orderedPostsWithAuthors);
+});
+
 app.Run();
